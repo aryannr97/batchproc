@@ -42,13 +42,16 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: Release
-        uses: CupOfTea696/gh-action-auto-release@v1.0.0
+      - name: Bump
+        id: tag_version
+        uses: mathieudutour/github-tag-action@v6.0
         with:
-          title: "Release: $version"
-          tag: "v$semver"
-          draft: false
-          regex: "/^Release: #{semver}$/i"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ steps.tag_version.outputs.new_tag }}
+          name: Release ${{ steps.tag_version.outputs.new_tag }}
+          body: ${{ steps.tag_version.outputs.changelog }}
 
