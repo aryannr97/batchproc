@@ -3,7 +3,7 @@
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/aryannr97/batchproc)
 [![Codecov](https://img.shields.io/codecov/c/github/aryannr97/batchproc)](https://app.codecov.io/gh/aryannr97/batchproc)
 [![Go Report Card](https://goreportcard.com/badge/github.com/aryannr97/batchproc)](https://goreportcard.com/report/github.com/aryannr97/batchproc)
-[![Go Report Card](https://img.shields.io/badge/Linter-golangci--lint-green)](https://golangci-lint.run)
+[![Go Report Card](https://img.shields.io/badge/Linter-golangci--lint-informational)](https://golangci-lint.run)
 [![MIT license](https://img.shields.io/github/license/aryannr97/batchproc)](https://github.com/aryannr97/batchproc/blob/main/LICENSE)
 ## Generic batch processor
 
