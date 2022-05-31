@@ -7,12 +7,12 @@
 [![MIT license](https://img.shields.io/github/license/aryannr97/batchproc)](https://github.com/aryannr97/batchproc/blob/main/LICENSE)
 ## Generic batch processor
 
-batchproc is developed to serve the puropse of enabling a uniform way to process large volumes of different types of data & run repititive computations as per requirement 
+batchproc is developed to serve the purpose of enabling a uniform way to process large volumes of different types of data & run repititive computations as per requirement 
 
 batchproc essentially provides
 - Ability to process any type of **indexed**, **iterative** data
 - **Customization** for batch steps
-- **Rungroups** to execute batch units concurrently
+- [**Rungroups**](https://github.com/bharat-rajani/rungroup) to execute batch units concurrently
 
 ### :floppy_disk: Installation
 ```

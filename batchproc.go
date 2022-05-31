@@ -133,5 +133,5 @@ func (e *Executor) Aggregate(aggregation AggregationFunc) interface{} {
 // onComplete performs logging,reporting activities on batch processing completion
 func (e *Executor) onComplete() {
 	e.endTime = time.Now()
-	e.ElapsedDuration = time.Duration(e.endTime.Sub(e.startTime).Seconds())
+	e.ElapsedDuration = time.Duration(e.endTime.Sub(e.startTime))
 }
