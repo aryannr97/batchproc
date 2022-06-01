@@ -39,16 +39,14 @@ jobs:
   release:  
     needs: [build]
     runs-on: ubuntu-latest
-    steps:
+      steps:
       - uses: actions/checkout@v2
-      
-      - name: Release
-        uses: CupOfTea696/gh-action-auto-release@v1.0.0
+      - uses: actions/setup-node@v1
         with:
-          title: "Release: $version"
-          tag: "v$semver"
-          draft: false
-          regex: "/^Release: #{semver}$/i"
+          node-version: 12
+      - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx semantic-release
+
 
