@@ -40,18 +40,20 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      
-      - name: Bump
-        id: tag_version
-        uses: mathieudutour/github-tag-action@v6.0
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          node-version: 'lts/*'
 
       - name: Release
-        uses: ncipollo/release-action@v1
-        with:
-          tag: ${{ steps.tag_version.outputs.new_tag }}
-          name: Release ${{ steps.tag_version.outputs.new_tag }}
-          body: ${{ steps.tag_version.outputs.changelog }}
-
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npm install --global semantic-release @semantic-release/changelog @semantic-release/git
+          npx semantic-release --branches main --plugins \
+            @semantic-release/commit-analyzer \
+            @semantic-release/release-notes-generator \
+            @semantic-release/changelog \
+            @semantic-release/github \
+            @semantic-release/git
+        shell: bash
