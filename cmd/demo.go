@@ -12,16 +12,21 @@ func main() {
 	data := getData()
 
 	// Creation stage
+	fmt.Println("Creating batch executor")
 	executor := batchproc.New(context.Background(), "main", len(data), data, getBatchUnit)
+
 	// Computation stage
+	fmt.Println("Batch processor execution starting")
 	if err := executor.Run(); err != nil {
 		log.Println(err)
 		return
 	}
 	// Aggregation stage
+	fmt.Println("Batch processor result aggregation starting")
 	result := executor.Aggregate(aggregation)
 
 	fmt.Printf("Addition of first 2000 integers is: %v\n", result)
+	fmt.Printf("Batch processor took %vns for execution\n", executor.ElapsedDuration.Nanoseconds())
 
 }
 
@@ -49,6 +54,8 @@ func (t *CustomBatchUnit) Compute(start, end int, collection interface{}) error 
 		}
 
 		t.result += count
+
+		return nil
 	}
 
 	return fmt.Errorf("type assertion error")
