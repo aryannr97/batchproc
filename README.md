@@ -38,6 +38,7 @@ func getBatchUnit() batchproc.BatchUnit {
 	return &CustomBatchUnit{}
 }
 ```
+- *New* also accepts an optional last parameter (batchSize) if user prefers to provide any preferred batch size
 
 ##### 2. **BatchUnit**
 - It's an interface defining two methods Compute & GetResult
