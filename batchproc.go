@@ -16,7 +16,7 @@ import (
 //
 // data is actual collection need to be processed in batched fashion,
 //
-// loadBatches is used to load batches with user defined type implementing BatchUnit interface,
+// getBatchUnit is used to fetch user defined type implementing BatchUnit interface and load batches,
 //
 // batchSize is optional & can be passed to override dynamic batch sizing.
 func New(ctx context.Context, id string, totalCount int, data interface{}, getBatchUnit GetBatchUnitFunc, batchSize ...int) *Executor {
