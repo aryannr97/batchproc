@@ -8,7 +8,7 @@ import (
 
 func TestNew(t *testing.T) {
 	ctx := context.Background()
-	newCtx := context.WithValue(ctx, testRun, true)
+	newCtx := context.WithValue(ctx, TestRun, true)
 	type args struct {
 		ctx           context.Context
 		id            string
@@ -146,8 +146,8 @@ func TestNew(t *testing.T) {
 			testCollection := prepareTestCollection(tt.args.testDataCount)
 			tt.args.totalCount = len(testCollection)
 			tt.args.data = testCollection
-			if got := New(tt.args.ctx, tt.args.id, tt.args.totalCount, tt.args.data, tt.args.loadBatches, tt.args.batchSize...); got.batchCount != tt.want {
-				t.Errorf("batchCount = %v want = %v", got.batchCount, tt.want)
+			if got := New(tt.args.ctx, tt.args.id, tt.args.totalCount, tt.args.data, tt.args.loadBatches, tt.args.batchSize...); got.GetBatchCount() != tt.want {
+				t.Errorf("batchCount = %v want = %v", got.GetBatchCount(), tt.want)
 			}
 		})
 	}
@@ -227,7 +227,7 @@ func TestExecutor_Aggregate(t *testing.T) {
 		want   interface{}
 	}{
 		{
-			"Aggregate batch results to get final sum of first 1999 natural numbers",
+			"Aggregate batch results to get final sum of first 2000 +ve integers",
 			fields{
 				ctx,
 				"unit-test",

@@ -12,8 +12,8 @@ func main() {
 	data := getData()
 
 	// Creation stage
-	fmt.Println("Creating batch executor")
 	executor := batchproc.New(context.Background(), "main", len(data), data, getBatchUnit)
+	fmt.Printf("Created batch executor loaded with number of batches: %v\n", executor.GetBatchCount())
 
 	// Computation stage
 	fmt.Println("Batch processor execution starting")

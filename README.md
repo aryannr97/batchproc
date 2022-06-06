@@ -20,7 +20,7 @@ go get -u github.com/aryannr97/batchproc
 ```
 
 ### :notebook_with_decorative_cover: Documentation
-Detailed documentation can be found [here](https://github.com/aryannr97/batchproc/wiki/batchproc-wiki)
+Detailed documentation can be found [here](https://github.com/aryannr97/batchproc/wiki)
 
 ### :technologist: Usage
 

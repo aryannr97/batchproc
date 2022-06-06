@@ -8,25 +8,16 @@ import (
 	"github.com/bharat-rajani/rungroup"
 )
 
-// Executor represents concurrent batch processing entity
-type Executor struct {
-	ctx             context.Context
-	id              string
-	batchSize       int
-	totalCount      int
-	batchCount      int
-	batches         []BatchUnit
-	collection      interface{}
-	startTime       time.Time
-	endTime         time.Time
-	ElapsedDuration time.Duration
-}
-
 // New creates, initializes & returns a new batch Executor,
+//
 // id is used to mark each batch with unique identification e.g {id}-batch-0,
+//
 // totalCount is the total size of the collection,
+//
 // data is actual collection need to be processed in batched fashion,
+//
 // loadBatches is used to load batches with user defined type implementing BatchUnit interface,
+//
 // batchSize is optional & can be passed to override dynamic batch sizing.
 func New(ctx context.Context, id string, totalCount int, data interface{}, getBatchUnit GetBatchUnitFunc, batchSize ...int) *Executor {
 	e := &Executor{
@@ -50,6 +41,20 @@ func New(ctx context.Context, id string, totalCount int, data interface{}, getBa
 	return e
 }
 
+// Executor represents concurrent batch processing entity
+type Executor struct {
+	ctx             context.Context
+	id              string
+	batchSize       int
+	totalCount      int
+	batchCount      int
+	batches         []BatchUnit
+	collection      interface{}
+	startTime       time.Time
+	endTime         time.Time
+	ElapsedDuration time.Duration
+}
+
 // prepareDynamicLoading loads number of batches, batchSize depending on totalCount,
 // number of batches formed will be min:1 max:20.
 func (e *Executor) prepareDynamicLoading() {
@@ -58,7 +63,7 @@ func (e *Executor) prepareDynamicLoading() {
 	Testing different number of batches can be accomplished even with smaller size of mockData.
 	*/
 	scaleDownFactor := 1
-	if test, _ := e.ctx.Value(testRun).(bool); test {
+	if test, _ := e.ctx.Value(TestRun).(bool); test {
 		scaleDownFactor = 100
 	}
 
@@ -134,4 +139,9 @@ func (e *Executor) Aggregate(aggregation AggregationFunc) interface{} {
 func (e *Executor) onComplete() {
 	e.endTime = time.Now()
 	e.ElapsedDuration = time.Duration(e.endTime.Sub(e.startTime))
+}
+
+// GetBatchCount returns number of batches for given executor
+func (e *Executor) GetBatchCount() int {
+	return e.batchCount
 }

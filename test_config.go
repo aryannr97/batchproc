@@ -4,4 +4,4 @@ package batchproc
 type testRunKey string
 
 // testRun defines constant key for unit test
-const testRun testRunKey = "testRun"
+const TestRun testRunKey = "testRun"
