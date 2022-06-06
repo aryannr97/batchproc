@@ -1,4 +1,5 @@
 # batchproc
+[![Go Reference](https://pkg.go.dev/badge/github.com/aryannr97/batchproc.svg)](https://pkg.go.dev/github.com/aryannr97/batchproc)
 [![RELEASE](https://github.com/aryannr97/batchproc/actions/workflows/release.yml/badge.svg)](https://github.com/aryannr97/batchproc/actions/workflows/release.yml)
 ![GitHub go.mod Go version](https://img.shields.io/github/go-mod/go-version/aryannr97/batchproc)
 [![Codecov](https://img.shields.io/codecov/c/github/aryannr97/batchproc)](https://app.codecov.io/gh/aryannr97/batchproc)
@@ -20,7 +21,7 @@ go get -u github.com/aryannr97/batchproc
 ```
 
 ### :notebook_with_decorative_cover: Documentation
-Detailed documentation can be found [here](https://github.com/aryannr97/batchproc/wiki/batchproc-wiki)
+Detailed documentation can be found [here](https://github.com/aryannr97/batchproc/wiki)
 
 ### :technologist: Usage
 
@@ -140,5 +141,5 @@ cpu: Intel(R) Core(TM) i7-10850H CPU @ 2.70GHz
 
 As observed, batch processing can nearly run for **twice the number of iterations** and **reduce processing time by half**
 
-### Example
+### :open_file_folder: Example
 To execute the demo program, run command `make demo`
